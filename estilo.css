@@ -8,7 +8,7 @@ body
 }
 
 a{
-    color: #ff00ff;
+    color: #cdcdcd;
     font-family: helvetica;
     text-decoration: none;
 }
@@ -67,7 +67,7 @@ a:hover{
 #menuToggle a
 {
     text-decoration: none;
-    color: #ff00ff;
+    color: #cdcdcd;
 
     transition: color 0.3s ease;
 }

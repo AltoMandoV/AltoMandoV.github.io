@@ -9,6 +9,11 @@ This site can be visited here: [Pokédex Project](https://javiergeli.github.io/)
 git clone https://github.com/javiergeli/javiergeli.github.io.git
 ```
 
+## Terminal steps to the project
+```
+cd Downloads
+cd altomandov.github.io
+```
 
 ## Adding and commiting the project
 ```
