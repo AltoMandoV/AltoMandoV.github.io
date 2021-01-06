@@ -1,0 +1,473 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    background: #232323;
+    color: #cdcdcd;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+a{
+    color: #ff00ff;
+    font-family: helvetica;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #572364;
+}
+
+.arrow {
+    border: solid #777;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-right: 5px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.acotado{
+    width: 50%;
+}
+
+
+#resultado{
+    padding-left: 400px;
+
+}
+
+/* MENU POKÉMON */
+
+
+#menuToggle
+{
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    float: left;
+    z-index: 1;
+
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle a
+{
+    text-decoration: none;
+    color: #ff00ff;
+
+    transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+    color: #572364;
+}
+
+
+#menuToggle input
+{
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+
+    cursor: pointer;
+
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+
+    -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #cdcdcd;
+    border-radius: 3px;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+    transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+    transform-origin: 0% 100%;
+}
+
+/*
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #cdcdcd;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu
+{
+    position: absolute;
+    width: 100px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    background: #232323;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+#menuToggle input:checked ~ ul
+{
+    transform: none;
+}
+
+
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2196F3;
+}
+
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.topnav .search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+.topnav .search-container button:hover {
+    background: #ccc;
+}
+
+
+/*CENTRAR COSAS*/
+
+.centro{
+    right: 0px;
+    border: 3px solid #00ffff;
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 15px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    float:right;
+}
+
+.centric{
+    right: 0px;
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 15px;
+    float: right;
+}
+
+/*COLLAPSIBLE*/
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    margin: auto;
+}
+
+.contenido{
+    background-color: dimgray;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    color: #ff00ff;
+    background-color: #f1f1f1;
+}
+
+/*SCROLL*/
+
+.scroll {
+    margin:4px 4px;
+    padding:4px;
+    width: 500px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+html, body, #container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*LOADER*/
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    background: #232323;
+    border-top: 16px solid #ff00ff;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.Home{
+    display: block;
+    margin-left: 50%;
+    padding-top: 30px;
+    margin-rigt: 35%;
+}
+
+.Home1{
+    margin-left: 40%;
+    padding-top: 30px;
+    margin-rigt: 35%;
+}
+
+.Home2{
+    margin-left: 30%;
+    padding-top: 30px;
+    margin-rigt: 35%;
+}
+
+.Home3{
+    margin-left: 60%;
+    padding-top: 30px;
+    margin-rigt: 35%;
+}
+
+.Home4{
+    margin-left: 70%;
+    padding-top: 30px;
+}
+
+/* GRID creado con grid.layoutit.com*/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 0.9fr;
+    gap: 0px 1px;
+    grid-template-areas:
+    "Imagen Info";
+}
+
+.Imagen { grid-area: Imagen; }
+
+.Info {
+    display: grid;
+    grid-template-columns: 1fr 0.4fr 1.2fr 1.4fr;
+    grid-template-rows: 0.7fr 1.3fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "Nombre id Fisico Extra"
+    "Descripcion Descripcion Sprites Sprites";
+    grid-area: Info;
+}
+
+.id { grid-area: id; }
+
+#tabla{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.Descripcion { grid-area: Descripcion; }
+
+.Fisico {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "Altura Altura Altura"
+    "Peso Peso Peso";
+    grid-area: Fisico;
+}
+
+.Altura { grid-area: Altura; }
+
+.Peso { grid-area: Peso; }
+
+.Nombre { grid-area: Nombre; }
+
+.Extra {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "Tipos Habilidades";
+    grid-area: Extra;
+}
+
+.Tipos { grid-area: Tipos; }
+
+.Habilidades { grid-area: Habilidades; }
+
+.Sprites { grid-area: Sprites; }
+
+/*********CALCULADORA*********/
+.grid-calc {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    align-items: center;
+    justify-items: center;
+    grid-template-areas:
+    "IVs IVs IVs IVs IVs IVs"
+    "EVs EVs EVs EVs EVs EVs"
+    "Nivel Nivel Nivel Naturaleza Naturaleza Naturaleza";
+}
+.IVs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "HP ATK DEF SPATK SPDF SPD";
+    grid-area: IVs;
+}
+.HP { grid-area: HP; }
+.ATK { grid-area: ATK; }
+.DEF { grid-area: DEF; }
+.SPATK { grid-area: SPATK; }
+.SPDF { grid-area: SPDF; }
+.SPD { grid-area: SPD; }
+.EVs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "hp atk def spatk spdf spd";
+    grid-area: EVs;
+}
+.hp { grid-area: hp; }
+.atk { grid-area: atk; }
+.def { grid-area: def; }
+.spatk { grid-area: spatk; }
+.spdf { grid-area: spdf; }
+.spd { grid-area: spd; }
+
+.Nivel { grid-area: Nivel; }
+.Naturaleza { grid-area: Naturaleza; }
+

@@ -1,0 +1,44 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+
+#header-container {
+    border-radius: 0px !important;
+}
+
+#header-text{
+    margin: 0 auto;
+}
+
+
+#container {
+    margin: auto;
+}
+
+#poke-container {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+#generate-pokemon {
+    margin: 0 auto;
+}
+
+#delete-btn {
+    position: absolute;
+    left: 85%;
+    display: none;
+    margin-bottom: 5%;
+}
+
+a{
+    color: #ff00ff;
+    text-align: center;
+}
+
+a:hover{
+    color: #8c004b;
+}

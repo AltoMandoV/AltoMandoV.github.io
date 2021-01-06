@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Project Pokédex</title>
+    <meta name="author" content="Javier Geli Megías">
+    <meta name="description" content="Carretilla de la Práctica 1 de Proyectos Web I">
+    <meta name="keywords" content="HTML, HTML5, Pokemon, PokeApi, Pokémon">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+
+    <script src="pokedex.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-radar.min.js"></script>
+
+
+</head>
+<body onload="asyncGetAux();">
+
+<nav role="navigation">
+    <div id="menuToggle">
+        <input type="checkbox"/>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu" class="scroll">
+        </ul>
+    </div>
+    <div class="centric">
+        <div class="topnav">
+            <div class="search-container">
+                <form class="centric" name="search" onsubmit="return makeSearch()" >
+                    Pokémon: <input id="search" type="text" name="name1"/>
+                    <button type="submit" name="Submit" value="Submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <a href="index.html">
+        <img src="icon.png" height="60" width="60" class="Home"/>
+    </a>
+</nav>
+<section class="contenido" id="prueba" style="clear:both;">
+    <div class="grid-container" id="tabla">
+        <div class="Imagen" id="imagen"></div>
+        <div class="Info" id="info">
+            <div class="Nombre" id="name"></div>
+            <div class="id" id="num"></div>
+            <div class="Descripcion" id="desc"></div>
+            <div class="Fisico" id="phy">
+                <div class="Altura" id="h"></div>
+                <div class="Peso" id="w"></div>
+            </div>
+            <div class="Sprites" id="spr"></div>
+            <div class="Extra" id="ext">
+                <div class="Tipos" id="ty"></div>
+                <div class="Habilidades" id="ab"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="StatsBase" style="display:none">
+        <div id="BaseHP"></div>
+        <div id="BaseATK"></div>
+        <div id="BaseSPATK"></div>
+        <div id="BaseDEF"></div>
+        <div id="BaseSPDEF"></div>
+        <div id="BaseSPEED"></div>
+    </div>
+
+    <div class="centro" id="forms" style="display:none">
+        <button type="button" class="collapsible">Variaciones o Formas</button>
+        <div class="content" id="formas">
+        </div>
+    </div>
+
+    <div class="centro" id="evolutions" style="display:none">
+        <button type="button" class="collapsible">Cadena Evolutiva</button>
+        <div class="content" id="evolucion">
+        </div>
+    </div>
+
+    <div class="centro" id="moves" style="display:none">
+        <button type="button" class="collapsible">Lista de Movimientos</button>
+        <div class="content" id="movimientos">
+        </div>
+    </div>
+
+    <div class="centro" id="locations" style="display:none">
+        <button type="button" class="collapsible">Localizaciones</button>
+        <div class="content" id="localizaciones">
+        </div>
+    </div>
+
+    <div class="centro" id="calc" style="display:none">
+        <button type="button" class="collapsible">Calculadora</button>
+        <div class="content" id="calculadora">
+                <div class="grid-calc">
+                    <!--<div class="Texto"><p> EVs: 255 como valor máximo y 510 a repartir entre todos los campos </p></div>-->
+                    <div class="IVs">
+                        <div class="HP">
+                            <label for="salud">HP:</label><br>
+                            <input type="number" id="salud" name="salud" min="0" max="31">
+                        </div>
+                        <div class="ATK">
+                            <label for="ataque">Ataque:</label><br>
+                            <input type="number" id="ataque" name="ataque" min="0" max="31">
+                        </div>
+                        <div class="DEF">
+                            <label for="defensa">Defensa:</label><br>
+                            <input type="number" id="defensa" name="defensa" min="0" max="31">
+                        </div>
+                        <div class="SPATK">
+                            <label for="ataque_especial">Ataque Especial:</label><br>
+                            <input type="number" id="ataque_especial" name="ataque_especial" min="0" max="31">
+                        </div>
+                        <div class="SPDF">
+                            <label for="defensa_especial">Defensa Especial:</label><br>
+                            <input type="number" id="defensa_especial" name="defensa_especial" min="0" max="31">
+                        </div>
+                        <div class="SPD">
+                            <label for="velocidad">Velocidad:</label><br>
+                            <input type="number" id="velocidad" name="velocidad" min="0" max="31">
+                        </div>
+                    </div>
+                    <div class="EVs">
+                        <!-- 510 en total, 255 max por stat-->
+                        <div class="hp">
+                            <label for="hp">HP:</label><br>
+                            <input type="number" id="hp" name="hp" min="0" max="255">
+                        </div>
+                        <div class="atk">
+                            <label for="atk">Ataque:</label><br>
+                            <input type="number" id="atk" name="atk" min="0" max="255">
+                        </div>
+                        <div class="def">
+                            <label for="def">Defensa:</label><br>
+                            <input type="number" id="def" name="def" min="0" max="255">
+                        </div>
+                        <div class="spatk">
+                            <label for="spatk">Ataque Especial:</label><br>
+                            <input type="number" id="spatk" name="spatk" min="0" max="255">
+                        </div>
+                        <div class="spdf">
+                            <label for="spdf">Defensa Especial:</label><br>
+                            <input type="number" id="spdf" name="spdf" min="0" max="255">
+                        </div>
+                        <div class="spd">
+                            <label for="spd">Velocidad:</label><br>
+                            <input type="number" id="spd" name="spd" min="0" max="255">
+                        </div>
+                    </div>
+                    <!--<div class="Texto2"><p> EVs: 255 como valor máximo y 510 a repartir entre todos los campos </p></div>-->
+                    <div class="Nivel">
+                        <div class="slidecontainer">
+                            <p>Nivel (1-100): </p><p id="numero">Value: </p><br>
+                            <input type="range" min="1" max="100" value="50" id="level">
+                        </div>
+                        <script>
+                            var slider = document.getElementById("level");
+                            var output = document.getElementById("numero");
+                            output.innerHTML = slider.value;
+
+                            slider.oninput = function() {
+                                output.innerHTML = this.value;
+                            }
+                        </script>
+                    </div>
+                    <div class="Naturaleza">
+                        <form>
+                            <label for="nats">Naturaleza: </label><br>
+                            <input list="nats2" name="nats" id="nats">
+                            <datalist id="nats2">
+                                <option value="Activa">
+                                <option value="Afable">
+                                <option value="Agitada">
+                                <option value="Alegre">
+                                <option value="Alocada">
+                                <option value="Amable">
+                                <option value="Audaz">
+                                <option value="Cuta">
+                                <option value="Dócil">
+                                <option value="Firme">
+                                <option value="Floja">
+                                <option value="Fuerte">
+                                <option value="Grosera">
+                                <option value="Huraña">
+                                <option value="Ingenua">
+                                <option value="Mansa">
+                                <option value="Miedosa">
+                                <option value="Modesta">
+                                <option value="Osada">
+                                <option value="Pícara">
+                                <option value="Plácida">
+                                <option value="Rara">
+                                <option value="Serena">
+                                <option value="Seria">
+                                <option value="Tímida">
+                            </datalist>
+                        </form>
+                    </div>
+                </div>
+            <button class="envios" type="submit" name="Submit" value="Submit" onclick="return actualizaInfo()">Calcula!</button>
+        </div>
+    </div>
+
+</section>
+
+<div class="acotado" id="container"></div>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
