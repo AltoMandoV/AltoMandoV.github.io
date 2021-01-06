@@ -71,4 +71,5 @@ git push -f origin master
 - [ ] Make it mobile-first (responsiveness on point)
 - [ ] MO Carrier search
 - [ ] Team Builder + txt export for Showdown
-- [ ] Check calculator system's aesthetics
+- [X] Check calculator system's aesthetics
+- [X] Check margins
