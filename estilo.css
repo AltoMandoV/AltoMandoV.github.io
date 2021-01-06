@@ -1,3 +1,4 @@
+/*TAGS GENERALES*/
 body
 {
     margin: 0;
@@ -21,6 +22,7 @@ a:hover{
     color: #572364;
 }
 
+/*CLASES O DIBUJOS*/
 .arrow {
     border: solid #777;
     border-width: 0 3px 3px 0;
@@ -46,119 +48,7 @@ a:hover{
     width: 50%;
 }
 
-
-#resultado{
-    padding-left: 400px;
-
-}
-
 /* MENU POKÉMON */
-
-
-#menuToggle
-{
-    display: block;
-    position: relative;
-    top: 50px;
-    left: 50px;
-    float: left;
-    z-index: 1;
-
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-#menuToggle a
-{
-    text-decoration: none;
-    color: #cdcdcd;
-
-    transition: color 0.3s ease;
-}
-
-#menuToggle a:hover
-{
-    color: #572364;
-}
-
-
-#menuToggle input
-{
-    display: block;
-    width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
-
-    cursor: pointer;
-
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
-
-    -webkit-touch-callout: none;
-}
-
-/*
- * Just a quick hamburger
- */
-#menuToggle span
-{
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #cdcdcd;
-    border-radius: 3px;
-
-    z-index: 1;
-
-    transform-origin: 4px 0px;
-
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    opacity 0.55s ease;
-}
-
-#menuToggle span:first-child
-{
-    transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2)
-{
-    transform-origin: 0% 100%;
-}
-
-/*
- * Transform all the slices of hamburger
- * into a crossmark.
- */
-#menuToggle input:checked ~ span
-{
-    opacity: 1;
-    transform: rotate(45deg) translate(-2px, -1px);
-    background: #cdcdcd;
-}
-
-/*
- * But let's hide the middle one.
- */
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-/*
- * Ohyeah and the last one should go the other direction
- */
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-    transform: rotate(-45deg) translate(0, -1px);
-}
-
 #menu
 {
     position: absolute;
@@ -234,30 +124,13 @@ a:hover{
 }
 
 
+/*CONTENIDO RESULTADO*/
 /*CENTRAR COSAS*/
-
-.centro{
-    right: 0px;
-    border: 3px solid #00ffff;
-    padding: 10px;
-    margin: auto;
-    width: 50%;
-    margin-bottom: 15px;
-}
 
 .container{
     display: flex;
     flex-direction: row;
     float:right;
-}
-
-.centric{
-    right: 0px;
-    padding: 10px;
-    margin: auto;
-    width: 50%;
-    margin-bottom: 15px;
-    float: right;
 }
 
 /*COLLAPSIBLE*/
@@ -273,12 +146,6 @@ a:hover{
     outline: none;
     font-size: 15px;
     margin: auto;
-}
-
-.contenido{
-    background-color: dimgray;
-    margin-left: 250px;
-    margin-right: 50px;
 }
 
 .active, .collapsible:hover {
@@ -299,7 +166,7 @@ a:hover{
     margin:4px 4px;
     padding:4px;
     width: 500px;
-    height: 600px;
+    height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
     text-align:justify;
@@ -324,7 +191,6 @@ html, body, #container {
     animation: spin 2s linear infinite;
 }
 
-/* Safari */
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -335,58 +201,10 @@ html, body, #container {
     100% { transform: rotate(360deg); }
 }
 
-.Home{
-    display: block;
-    margin-left: 50%;
-    padding-top: 30px;
-    margin-rigt: 35%;
-}
 
-.Home1{
-    margin-left: 40%;
-    padding-top: 30px;
-    margin-rigt: 35%;
-}
-
-.Home2{
-    margin-left: 30%;
-    padding-top: 30px;
-    margin-rigt: 35%;
-}
-
-.Home3{
-    margin-left: 60%;
-    padding-top: 30px;
-    margin-rigt: 35%;
-}
-
-.Home4{
-    margin-left: 70%;
-    padding-top: 30px;
-}
-
-/* GRID creado con grid.layoutit.com*/
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 0.9fr;
-    gap: 0px 1px;
-    grid-template-areas:
-    "Imagen Info";
-}
+/* GRID INFO creado con grid.layoutit.com*/
 
 .Imagen { grid-area: Imagen; }
-
-.Info {
-    display: grid;
-    grid-template-columns: 1fr 0.4fr 1.2fr 1.4fr;
-    grid-template-rows: 0.7fr 1.3fr;
-    gap: 0px 0px;
-    grid-template-areas:
-    "Nombre id Fisico Extra"
-    "Descripcion Descripcion Sprites Sprites";
-    grid-area: Info;
-}
 
 .id { grid-area: id; }
 
@@ -477,3 +295,216 @@ html, body, #container {
 .Nivel { grid-area: Nivel; }
 .Naturaleza { grid-area: Naturaleza; }
 
+/*RESPONSIVE MOBILE FIRST*/
+
+.contenido{
+    background-color: dimgray;
+}
+
+.Home{
+    display: block;
+    padding-top: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 2fr;
+    gap: 0px 1px;
+    grid-template-areas:
+    "Imagen"
+    "Info";
+}
+
+.Info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.3fr 0.7fr 0.7fr 0.7fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "Nombre id"
+    "Fisico Fisico"
+    "Extra Extra"
+    "Descripcion Descripcion"
+    "Sprites Sprites";
+    grid-area: Info;
+}
+
+.centro{
+    right: 0px;
+    border: 3px solid #00ffff;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.centric{
+    display: block;
+    right: 0px;
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 15px;
+    float: left;
+}
+#menuToggle{
+    display:none;
+}
+
+
+@media only screen and (min-width: 700px) {
+    .contenido{
+        background-color: dimgray;
+        margin-left: 250px;
+        margin-right: 50px;
+    }
+
+    .Home{
+        display: block;
+        margin-left: 50%;
+        padding-top: 20px;
+        margin-rigt: 35%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 0.9fr;
+        gap: 0px 1px;
+        grid-template-areas:
+    "Imagen Info";
+    }
+
+    .Info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 3fr;
+        grid-template-rows: 0.7fr 1.3fr;
+        gap: 0px 15px;
+        grid-template-areas:
+    "Nombre id Fisico Extra"
+    "Descripcion Descripcion Sprites Sprites";
+        grid-area: Info;
+    }
+    .centro{
+        right: 0px;
+        border: 3px solid #00ffff;
+        padding: 10px;
+        margin: auto;
+        width: 50%;
+        margin-bottom: 15px;
+    }
+    .centric{
+        display: block;
+        right: 0px;
+        padding: 10px;
+        margin: auto;
+        width: 50%;
+        margin-bottom: 15px;
+        float: right;
+    }
+    #menuToggle
+    {
+        display: block;
+        position: relative;
+        top: 50px;
+        left: 50px;
+        float: left;
+        z-index: 1;
+
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    #menuToggle a
+    {
+        text-decoration: none;
+        color: #cdcdcd;
+
+        transition: color 0.3s ease;
+    }
+
+    #menuToggle a:hover
+    {
+        color: #572364;
+    }
+
+
+    #menuToggle input
+    {
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+
+        cursor: pointer;
+
+        opacity: 0; /* hide this */
+        z-index: 2; /* and place it over the hamburger */
+
+        -webkit-touch-callout: none;
+    }
+
+    /*
+     * Just a quick hamburger
+     */
+    #menuToggle span
+    {
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: #cdcdcd;
+        border-radius: 3px;
+
+        z-index: 1;
+
+        transform-origin: 4px 0px;
+
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+        opacity 0.55s ease;
+    }
+
+    #menuToggle span:first-child
+    {
+        transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2)
+    {
+        transform-origin: 0% 100%;
+    }
+
+    /*
+     * Transform all the slices of hamburger
+     * into a crossmark.
+     */
+    #menuToggle input:checked ~ span
+    {
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: #cdcdcd;
+    }
+
+    /*
+     * But let's hide the middle one.
+     */
+    #menuToggle input:checked ~ span:nth-last-child(3)
+    {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /*
+     * Ohyeah and the last one should go the other direction
+     */
+    #menuToggle input:checked ~ span:nth-last-child(2)
+    {
+        transform: rotate(-45deg) translate(0, -1px);
+    }
+
+}
