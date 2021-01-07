@@ -579,14 +579,14 @@ function muestraInfo(i) {
                     document.getElementById("spr").appendChild(frntS);
                     document.getElementById("spr").innerHTML += "<br>";
 
-                    fetch("http://pokeapi.co/api/v2/pokemon-species/"+myJson.name+"/")
+                    fetch("https://pokeapi.co/api/v2/pokemon-species/"+myJson.name+"/")
                         .then(function(response) {
                             return response.json();
                         })
                         .then(function(myJson) {
                             if (myJson.has_gender_differences){
                                 spritesGrid.innerHTML += "<h2>Sprites Hembra: </h2><br>";
-                                fetch("http://pokeapi.co/api/v2/pokemon/"+myJson.name+"/")
+                                fetch("https://pokeapi.co/api/v2/pokemon/"+myJson.name+"/")
                                     .then(function(response) {
                                         return response.json();
                                     })
