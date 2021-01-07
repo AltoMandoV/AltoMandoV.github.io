@@ -68,8 +68,9 @@ git push -f origin master
 - [ ] Suggest competitive role
 - [ ] Make links reload pokémon pages instead of refreshing the page info with different data
 - [ ] Sort menu list and sort it before adding it to the file
-- [ ] Make it mobile-first (responsiveness on point)
-- [ ] MO Carrier search
+- [X] Make it mobile-first (responsiveness on point)
+- [X] MO Carrier search
 - [ ] Team Builder + txt export for Showdown
 - [X] Check calculator system's aesthetics
 - [X] Check margins
+- [X] Diferencia macho y hembra

@@ -109,7 +109,6 @@ function muestraInfo(i) {
             nameGrid.innerHTML += "<h2>Nombre:</h2><p style='color:#00ffff;'>" +nombre +"</p><br>";
             idGrid.innerHTML += "<h2>Id: </h2><p style='color:#00ffff;'>" +myJson.id +"</p><br>";
 
-
             /*-----ART WORK-----*/
             var artWrk = document.createElement("img");
             //artWrk.src = myJson.sprites.other.official-artwork.front_default;
@@ -217,16 +216,31 @@ function muestraInfo(i) {
 
             /*-----MOVIMIENTOS-----*/
             var M = document.getElementById("moves");
+            var MO = document.getElementById("mos");
+
             M.style.display = "block";
+            var mos = 0;
+
+            var mocult = document.getElementById("mocultas");
             var moves = document.getElementById("movimientos");
+
+            mocult.innerHTML = "";
             moves.innerHTML = "";
             for (x = 0; x < myJson.moves.length; x++ ){
                 ataque = myJson.moves[x].move.name.charAt(0).toUpperCase() + myJson.moves[x].move.name.slice(1);
                 ataque = ataque.replace(/-/g, " ");
                 ataque = mayusculea(ataque);
 
-                moves.innerHTML += ataque + "<br>";
+
+                if (ataque == "Cut" || ataque == "Fly" || ataque == "Surf" || ataque == "Strength" || ataque == "Flash" || ataque == "Rock Smash" || ataque == "Waterfall" ||  ataque == "Dive" || ataque == "Whirlpool" || ataque == "Defog" || ataque == "Rock Climb"){
+                    mocult.innerHTML += ataque + "<br>";
+                    mos++;
+                }else{
+                    moves.innerHTML += ataque + "<br>";
+                }
             }
+
+            if (mos > 0){ MO.style.display = "block"; }
 
             /*-----VARIACIONES-----*/
             var forms = document.getElementById("formas");
@@ -558,11 +572,44 @@ function muestraInfo(i) {
                     var frntS = document.createElement("img");
                     frntS.src = myJson.sprites.front_shiny;
 
-                    spritesGrid.innerHTML += "<h2>Sprites: </h2><br>";
+                    spritesGrid.innerHTML += "<h2>Sprites Macho/Generales: </h2><br>";
                     document.getElementById("spr").appendChild(frnt);
                     document.getElementById("spr").appendChild(bck);
                     document.getElementById("spr").appendChild(bckS);
                     document.getElementById("spr").appendChild(frntS);
+                    document.getElementById("spr").innerHTML += "<br>";
+
+                    fetch("http://pokeapi.co/api/v2/pokemon-species/"+myJson.name+"/")
+                        .then(function(response) {
+                            return response.json();
+                        })
+                        .then(function(myJson) {
+                            if (myJson.has_gender_differences){
+                                spritesGrid.innerHTML += "<h2>Sprites Hembra: </h2><br>";
+                                fetch("http://pokeapi.co/api/v2/pokemon/"+myJson.name+"/")
+                                    .then(function(response) {
+                                        return response.json();
+                                    })
+                                    .then(function(myJson) {
+                                        var bckF = document.createElement("img");
+                                        bckF.src = myJson.sprites.back_female;
+                                        var bckSF = document.createElement("img");
+                                        bckSF.src = myJson.sprites.back_shiny_female;
+                                        var frntF = document.createElement("img");
+                                        frntF.src = myJson.sprites.front_female;
+                                        var frntSF = document.createElement("img");
+                                        frntSF.src = myJson.sprites.front_shiny_female;
+
+                                        document.getElementById("spr").appendChild(frntF);
+                                        document.getElementById("spr").appendChild(bckF);
+                                        document.getElementById("spr").appendChild(bckSF);
+                                        document.getElementById("spr").appendChild(frntSF);
+                                    });
+                            }
+                        });
+
+
+
                 });
 
             //Sugerir Rol: https://sites.google.com/site/pokemoncompetitive/roles
