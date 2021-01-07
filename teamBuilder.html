@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Pokédex - Team Builder</title>
+    <meta name="author" content="Javier Geli Megías">
+    <meta name="description" content="Carretilla de la Práctica 1 de Proyectos Web I">
+    <meta name="keywords" content="HTML, HTML5, Pokemon, PokeApi, Pokémon">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width,initial-scale=0.8">
+
+    <script src="teambuilder.js"></script>
+    <link rel="stylesheet" href="teambuilder.css">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-radar.min.js"></script>
+</head>
+<body>
+    <div class="Pkm1">
+        <form>
+            <label for="pkm1">Nombre Pokémon: </label><br>
+            <input list="pk1" name="pkm1" id="pkm1">
+            <datalist id="pk1">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="Pkm2">
+        <form>
+            <label for="pkm2">Nombre Pokémon: </label><br>
+            <input list="pk2" name="pkm2" id="pkm2">
+            <datalist id="pk2">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="Pkm3">
+        <form>
+            <label for="pkm3">Nombre Pokémon: </label><br>
+            <input list="pk3" name="pkm3" id="pkm3">
+            <datalist id="pk3">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="Pkm4">
+        <form>
+            <label for="pkm4">Nombre Pokémon: </label><br>
+            <input list="pk4" name="pkm4" id="pkm4">
+            <datalist id="pk4">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="Pkm5">
+        <form>
+            <label for="pkm5">Nombre Pokémon: </label><br>
+            <input list="pk5" name="pkm5" id="pkm5">
+            <datalist id="pk5">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <div class="Pkm6">
+        <form>
+            <label for="pkm6">Nombre Pokémon: </label><br>
+            <input list="pk6" name="pkm6" id="pkm6">
+            <datalist id="pk6">
+                <option value="Activa">
+                <option value="Afable">
+            </datalist>
+        </form>
+    </div>
+
+    <textarea id="text-val" rows="5" width="100%">This is the content of my file</textarea><br/>
+    <input type="button" id="dwn-btn" value="Download dinamically generated text file"/>
+
+    <script>
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        // Start file download.
+        document.getElementById("dwn-btn").addEventListener("click", function(){
+            // Generate download of hello.txt file with some content
+            var text = document.getElementById("text-val").value;
+            var filename = "yourTeam.txt";
+
+            download(filename, text);
+        }, false);
+    </script>
+</body>
+</html>
