@@ -164,7 +164,7 @@ function muestraInfo(i) {
                         break;
 
                     case 'Flying':
-                        tiposGrid.innerHTML += "<p style='color:#A98FF3;'> Lucha </p>";
+                        tiposGrid.innerHTML += "<p style='color:#A98FF3;'> Volador </p>";
                         break;
 
                     case 'Psychic':
